@@ -38,6 +38,7 @@ public class RedisConfig {
                 .disableCachingNullValues();
     }
     @Bean
+    @ConditionalOnMissingBean(RedisConnectionFactory.class)
     public RedisConnectionFactory redisConnectionFactory(@Value("${spring.data.redis.host:localhost}") String host,
                                                          @Value("${spring.data.redis.port:6379}") int port) {
         return new LettuceConnectionFactory(new RedisStandaloneConfiguration(host, port));

@@ -1,8 +1,8 @@
 package hn.shadowcore.mercadox.library.redis.repository;
 
 import hn.shadowcore.mercadox.library.entity.response.dto.CartDto;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +23,7 @@ public class CartRedisRepository {
          return Optional.ofNullable(redisTemplate.opsForValue().get(getKey(userId)))
                  .filter(CartDto.class::isInstance)
                  .map(CartDto.class::cast)
-                 .orElseThrow(() -> new ResourceNotFoundException(String
+                 .orElseThrow(() -> new EntityNotFoundException(String
                          .format("Cart was not found for User with ID: '%s'", userId)));
      }
 
