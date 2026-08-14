@@ -46,9 +46,9 @@ public class BaseTestEntities {
                 .build();
     }
 
-    protected hn.shadowcore.mercadox.library.entity.model.core.Order buildBaseOrder() {
-        return hn.shadowcore.mercadox.library.entity.model.core.Order.builder()
-                .id(hn.shadowcore.mercadox.library.entity.model.core.Order.generateId())
+    protected Order buildBaseOrder() {
+        return Order.builder()
+                .id(Order.generateId())
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .createdAt(Timestamp.valueOf(LocalDateTime.now()))
                 .user(user)

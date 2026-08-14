@@ -6,7 +6,6 @@
 
     <groupId>hn.shadowcore</groupId>
     <artifactId>mercado-x-redis</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
