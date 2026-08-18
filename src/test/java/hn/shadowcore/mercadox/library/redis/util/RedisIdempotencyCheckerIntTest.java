@@ -19,7 +19,6 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 @Testcontainers
 @ExtendWith(SpringExtension.class)
@@ -39,36 +38,36 @@ class RedisIdempotencyCheckerIntTest extends RedisTestSupport {
     private StringRedisTemplate stringRedisTemplate;
 
     @Test
-    void isDuplicate_shouldReturnFalse_forUnseenEventId() {
+    void claimProcessing_shouldReturnTrue_forUnseenEventId() {
         String eventId = UUID.randomUUID().toString();
 
-        assertThat(idempotencyChecker.isDuplicate(eventId)).isFalse();
+        assertThat(idempotencyChecker.claimProcessing(eventId)).isTrue();
     }
 
     @Test
-    void markProcessed_thenIsDuplicate_shouldReturnTrue() {
+    void claimProcessing_shouldReturnFalse_onSecondCallForSameId() {
         String eventId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(eventId);
+        idempotencyChecker.claimProcessing(eventId);
 
-        assertThat(idempotencyChecker.isDuplicate(eventId)).isTrue();
+        assertThat(idempotencyChecker.claimProcessing(eventId)).isFalse();
     }
 
     @Test
-    void markProcessed_shouldStoreValueUnderPrefixedKey() {
+    void claimProcessing_shouldStoreValue1UnderPrefixedKey() {
         String eventId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(eventId);
+        idempotencyChecker.claimProcessing(eventId);
 
         String stored = stringRedisTemplate.opsForValue().get("eventId:" + eventId);
-        assertThat(stored).isEqualTo("true");
+        assertThat(stored).isEqualTo("1");
     }
 
     @Test
-    void markProcessed_shouldApplyTtlOf24Hours() {
+    void claimProcessing_shouldApplyTtlOf24Hours() {
         String eventId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(eventId);
+        idempotencyChecker.claimProcessing(eventId);
 
         Long ttlSeconds = stringRedisTemplate.getExpire("eventId:" + eventId, TimeUnit.SECONDS);
         assertThat(ttlSeconds)
@@ -77,36 +76,35 @@ class RedisIdempotencyCheckerIntTest extends RedisTestSupport {
     }
 
     @Test
-    void markProcessed_shouldBeIdempotent_secondCallDoesNotThrowAndKeyStillPresent() {
+    void claimProcessing_secondCallShouldReturnFalse_andKeyShouldStillExist() {
         String eventId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(eventId);
+        idempotencyChecker.claimProcessing(eventId);
+        boolean secondResult = idempotencyChecker.claimProcessing(eventId);
 
-        assertThatCode(() -> idempotencyChecker.markProcessed(eventId))
-                .doesNotThrowAnyException();
-
-        assertThat(idempotencyChecker.isDuplicate(eventId)).isTrue();
+        assertThat(secondResult).isFalse();
+        assertThat(stringRedisTemplate.hasKey("eventId:" + eventId)).isTrue();
     }
 
     @Test
-    void markProcessed_shouldNotAffectOtherEventIds() {
-        String markedId = UUID.randomUUID().toString();
+    void claimProcessing_shouldNotAffectOtherEventIds() {
+        String claimedId = UUID.randomUUID().toString();
         String otherId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(markedId);
+        idempotencyChecker.claimProcessing(claimedId);
 
-        assertThat(idempotencyChecker.isDuplicate(otherId)).isFalse();
+        assertThat(idempotencyChecker.claimProcessing(otherId)).isTrue();
     }
 
     @Test
-    void markProcessed_shouldNotResetTtl_onSecondCall() {
+    void claimProcessing_secondCallShouldNotResetTtl() {
         String eventId = UUID.randomUUID().toString();
 
-        idempotencyChecker.markProcessed(eventId);
+        idempotencyChecker.claimProcessing(eventId);
         Long ttlAfterFirst = stringRedisTemplate.getExpire("eventId:" + eventId, TimeUnit.SECONDS);
 
-        // Second call is a no-op via setIfAbsent — TTL must not be extended or reset
-        idempotencyChecker.markProcessed(eventId);
+        // Second call is a no-op via setIfAbsent (NX) — TTL must not be extended or reset
+        idempotencyChecker.claimProcessing(eventId);
         Long ttlAfterSecond = stringRedisTemplate.getExpire("eventId:" + eventId, TimeUnit.SECONDS);
 
         assertThat(ttlAfterSecond).isLessThanOrEqualTo(ttlAfterFirst);

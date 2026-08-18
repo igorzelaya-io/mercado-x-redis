@@ -11,7 +11,6 @@ import org.springframework.data.redis.core.ValueOperations;
 import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
@@ -36,106 +35,81 @@ class RedisIdempotencyCheckerTest {
     }
 
     @Test
-    void isDuplicate_shouldReturnTrue_whenEventIdAlreadyExistsInRedis() {
-        when(valueOperations.get("eventId:event-123")).thenReturn("true");
-
-        boolean result = idempotencyChecker.isDuplicate("event-123");
-
-        assertThat(result).isTrue();
-    }
-
-    @Test
-    void isDuplicate_shouldReturnFalse_whenEventIdIsNotPresentInRedis() {
-        when(valueOperations.get("eventId:event-123")).thenReturn(null);
-
-        boolean result = idempotencyChecker.isDuplicate("event-123");
-
-        assertThat(result).isFalse();
-    }
-
-    @Test
-    void isDuplicate_shouldPrefixTheEventIdWhenBuildingTheKey() {
-        idempotencyChecker.isDuplicate("event-123");
-
-        verify(valueOperations).get("eventId:event-123");
-    }
-
-    // Null/blank IDs reach these methods only if the aspect's null guard fails.
-    // The tests document the permissive fallthrough behaviour — not the happy path.
-    @Test
-    void isDuplicate_shouldHandleNullEventId() {
-        when(valueOperations.get("eventId:null")).thenReturn(null);
-
-        boolean result = idempotencyChecker.isDuplicate(null);
-
-        assertThat(result).isFalse();
-        verify(valueOperations).get("eventId:null");
-    }
-
-    @Test
-    void isDuplicate_shouldHandleBlankEventId() {
-        when(valueOperations.get("eventId:")).thenReturn(null);
-
-        boolean result = idempotencyChecker.isDuplicate("");
-
-        assertThat(result).isFalse();
-        verify(valueOperations).get("eventId:");
-    }
-
-    @Test
-    void markProcessed_shouldStoreKeyWithTwentyFourHourTtl() {
+    void claimProcessing_shouldReturnTrue_whenKeyIsAbsent() {
         when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
 
-        idempotencyChecker.markProcessed("event-123");
-
-        verify(valueOperations).setIfAbsent(
-                eq("eventId:event-123"),
-                eq(String.valueOf(Boolean.TRUE)),
-                eq(Duration.ofHours(24)));
-    }
-
-    @Test
-    void markProcessed_shouldNotThrow_whenKeyIsAlreadyPresent() {
-        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(false);
-
-        assertThatCode(() -> idempotencyChecker.markProcessed("event-123"))
-                .doesNotThrowAnyException();
-
-        verify(valueOperations).setIfAbsent(
-                eq("eventId:event-123"),
-                eq(String.valueOf(Boolean.TRUE)),
-                eq(Duration.ofHours(24)));
-    }
-
-    @Test
-    void markProcessed_shouldHandleNullUuid() {
-        idempotencyChecker.markProcessed(null);
-
-        verify(valueOperations).setIfAbsent(
-                eq("eventId:null"),
-                eq(String.valueOf(Boolean.TRUE)),
-                eq(Duration.ofHours(24)));
-    }
-
-    @Test
-    void markProcessed_shouldNotInteractWithGet() {
-        idempotencyChecker.markProcessed("event-123");
-
-        verify(valueOperations, never()).get(any());
-    }
-
-    @Test
-    void isDuplicate_shouldReturnTrue_afterStoredValueReflectsMarkProcessed() {
-        // Simulates the full flow: markProcessed writes a key, isDuplicate finds it.
-        // Mock-level wiring; see RedisIdempotencyCheckerIntTest for the real round-trip.
-        String eventId = "event-lifecycle";
-        when(valueOperations.get("eventId:" + eventId)).thenReturn("true");
-
-        idempotencyChecker.markProcessed(eventId);
-        boolean result = idempotencyChecker.isDuplicate(eventId);
+        boolean result = idempotencyChecker.claimProcessing("event-123");
 
         assertThat(result).isTrue();
-        verify(valueOperations).setIfAbsent(eq("eventId:" + eventId), eq("true"), eq(Duration.ofHours(24)));
-        verify(valueOperations).get("eventId:" + eventId);
+    }
+
+    @Test
+    void claimProcessing_shouldReturnFalse_whenKeyAlreadyExists() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(false);
+
+        boolean result = idempotencyChecker.claimProcessing("event-123");
+
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void claimProcessing_shouldReturnFalse_whenSetIfAbsentReturnsNull() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(null);
+
+        boolean result = idempotencyChecker.claimProcessing("event-123");
+
+        assertThat(result).isFalse();
+    }
+
+    @Test
+    void claimProcessing_shouldPrefixEventIdWhenBuildingKey() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
+
+        idempotencyChecker.claimProcessing("event-123");
+
+        verify(valueOperations).setIfAbsent(eq("eventId:event-123"), any(), any(Duration.class));
+    }
+
+    @Test
+    void claimProcessing_shouldStoreValue1_withTtlOf24Hours() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
+
+        idempotencyChecker.claimProcessing("event-123");
+
+        verify(valueOperations).setIfAbsent(
+                eq("eventId:event-123"),
+                eq("1"),
+                eq(Duration.ofHours(24)));
+    }
+
+    // Null/blank IDs reach this method only if the aspect's null guard fails.
+    // The tests document the permissive fallthrough behaviour — not the happy path.
+    @Test
+    void claimProcessing_shouldHandleNullEventId() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
+
+        boolean result = idempotencyChecker.claimProcessing(null);
+
+        assertThat(result).isTrue();
+        verify(valueOperations).setIfAbsent(eq("eventId:null"), eq("1"), eq(Duration.ofHours(24)));
+    }
+
+    @Test
+    void claimProcessing_shouldHandleBlankEventId() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
+
+        boolean result = idempotencyChecker.claimProcessing("");
+
+        assertThat(result).isTrue();
+        verify(valueOperations).setIfAbsent(eq("eventId:"), eq("1"), eq(Duration.ofHours(24)));
+    }
+
+    @Test
+    void claimProcessing_shouldNeverCallGet() {
+        when(valueOperations.setIfAbsent(any(), any(), any(Duration.class))).thenReturn(true);
+
+        idempotencyChecker.claimProcessing("event-123");
+
+        verify(valueOperations, never()).get(any());
     }
 }

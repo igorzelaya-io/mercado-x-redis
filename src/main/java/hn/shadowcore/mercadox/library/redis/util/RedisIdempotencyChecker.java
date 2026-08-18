@@ -9,7 +9,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
-import java.util.Optional;
 
 @Slf4j
 @Component
@@ -20,15 +19,18 @@ public class RedisIdempotencyChecker {
     private final StringRedisTemplate redisTemplate;
     private static final String PREFIX = "eventId:";
 
-    public boolean isDuplicate(String eventId) {
-         Optional<String> response = Optional
-                 .ofNullable(redisTemplate.opsForValue().get(getKey(eventId)));
-         return response.isPresent();
-    }
-
-    public void markProcessed(String uuid) {
-        redisTemplate.opsForValue().setIfAbsent(getKey(uuid), String.valueOf(Boolean.TRUE),
-                Duration.ofHours(24));
+    /**
+     * Atomically claims the eventId for processing.
+     * Returns true if this is the first time this eventId is seen (caller should proceed).
+     * Returns false if the eventId was already processed (caller should skip — duplicate).
+     *
+     * Using a single setIfAbsent eliminates the TOCTOU race that existed when
+     * isDuplicate (GET) and markProcessed (SETNX) were separate operations.
+     */
+    public boolean claimProcessing(String eventId) {
+        Boolean wasAbsent = redisTemplate.opsForValue()
+                .setIfAbsent(getKey(eventId), "1", Duration.ofHours(24));
+        return Boolean.TRUE.equals(wasAbsent);
     }
 
     private String getKey(String uuid) {
