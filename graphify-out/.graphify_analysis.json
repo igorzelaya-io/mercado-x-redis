@@ -1,0 +1,275 @@
+{
+  "communities": {
+    "0": [
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_bean",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_configuration",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_contextconfiguration",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_extendwith",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_redisconnectionfactory",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_stringredistemplate",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_test",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_java_testcontainers",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_secondcallshouldnotresetttl",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_secondcallshouldreturnfalse_andkeyshouldstillexist",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_shouldapplyttlof24hours",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_shouldnotaffectothereventids",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_shouldreturnfalse_onsecondcallforsameid",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_shouldreturntrue_forunseeneventid",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest_claimprocessing_shouldstorevalue1underprefixedkey",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_testconfig",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_testconfig_redisidempotencychecker",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_testconfig_stringredistemplate"
+    ],
+    "1": [
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_redisidempotencychecker_claimprocessing",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_java_beforeeach",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_java_extendwith",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_java_stringredistemplate",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_java_test",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldhandleblankeventid",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldhandlenulleventid",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldnevercallget",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldprefixeventidwhenbuildingkey",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldreturnfalse_whenkeyalreadyexists",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldreturnfalse_whensetifabsentreturnsnull",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldreturntrue_whenkeyisabsent",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_claimprocessing_shouldstorevalue1_withttlof24hours",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest_setup",
+      "valueoperations"
+    ],
+    "2": [
+      "conditionalonmissingbean",
+      "enablecaching",
+      "rediscacheconfiguration",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_java_bean",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_java_configuration",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_java_redisconnectionfactory",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_java_redistemplate",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_java_stringredistemplate",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig_rediscacheconfiguration",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig_redisconnectionfactory",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig_redistemplate",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig_stringredistemplate"
+    ],
+    "3": [
+      "repository",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository_clearcart",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository_getcart",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository_getkey",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository_savecart",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_java_cartdto",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_java_redistemplate",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_java_requiredargsconstructor",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest_shouldclearcart",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest_shouldsaveandretrievecart",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_test"
+    ],
+    "4": [
+      "genericcontainer",
+      "order",
+      "organization",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities_buildbaseorder",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities_buildbaseorganization",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities_buildbaseuser",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities_buildsecondaryorganization",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redistestsupport",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_redistestsupport_redistestsupport",
+      "user"
+    ],
+    "5": [
+      "itemdto",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest_buildenv",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest_setenvironment",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_beforeeach",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_cartdto",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_contextconfiguration",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_extendwith",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_java_testcontainers"
+    ],
+    "6": [
+      "component",
+      "conditionalonbean",
+      "slf4j",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_java_requiredargsconstructor",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_java_stringredistemplate",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_redisidempotencychecker",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_redisidempotencychecker_getkey"
+    ],
+    "7": [
+      "cachemanager",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_java_bean",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_java_configuration",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_java_redisconnectionfactory",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_redisttlconfig",
+      "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_redisttlconfig_cachemanager"
+    ],
+    "8": [
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig_java_bean",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig_java_configuration",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig_java_redisconnectionfactory",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig_testredisconnectionconfig",
+      "src_test_java_hn_shadowcore_mercadox_library_redis_util_testredisconnectionconfig_testredisconnectionconfig_redisconnectionfactory"
+    ],
+    "9": [
+      "pkg_hn_shadowcore_mercado_x_redis"
+    ]
+  },
+  "cohesion": {
+    "0": 0.18947368421052632,
+    "1": 0.25735294117647056,
+    "2": 0.3076923076923077,
+    "3": 0.3076923076923077,
+    "4": 0.30303030303030304,
+    "5": 0.37777777777777777,
+    "6": 0.42857142857142855,
+    "7": 0.47619047619047616,
+    "8": 0.5333333333333333,
+    "9": 1.0
+  },
+  "gods": [
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_redisidempotencycheckerinttest",
+      "label": "RedisIdempotencyCheckerIntTest",
+      "degree": 15
+    },
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckertest_redisidempotencycheckertest",
+      "label": "RedisIdempotencyCheckerTest",
+      "degree": 14
+    },
+    {
+      "id": "src_main_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencychecker_redisidempotencychecker",
+      "label": "RedisIdempotencyChecker",
+      "degree": 12
+    },
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepositoryinttest_cartredisrepositoryinttest",
+      "label": "CartRedisRepositoryIntTest",
+      "degree": 12
+    },
+    {
+      "id": "src_main_java_hn_shadowcore_mercadox_library_redis_repository_cartredisrepository_cartredisrepository",
+      "label": "CartRedisRepository",
+      "degree": 10
+    },
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_base_basetestentities_basetestentities",
+      "label": "BaseTestEntities",
+      "degree": 10
+    },
+    {
+      "id": "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisconfig_redisconfig",
+      "label": "RedisConfig",
+      "degree": 7
+    },
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_util_redistestsupport_redistestsupport",
+      "label": "RedisTestSupport",
+      "degree": 6
+    },
+    {
+      "id": "src_test_java_hn_shadowcore_mercadox_library_redis_util_redisidempotencycheckerinttest_testconfig",
+      "label": "TestConfig",
+      "degree": 4
+    },
+    {
+      "id": "src_main_java_hn_shadowcore_mercadox_library_redis_config_redisttlconfig_redisttlconfig",
+      "label": "RedisTtlConfig",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "CartRedisRepositoryIntTest",
+      "target": "CartRedisRepository",
+      "source_files": [
+        "src/test/java/hn/shadowcore/mercadox/library/redis/repository/CartRedisRepositoryIntTest.java",
+        "src/main/java/hn/shadowcore/mercadox/library/redis/repository/CartRedisRepository.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "RedisIdempotencyCheckerIntTest",
+      "target": "RedisIdempotencyChecker",
+      "source_files": [
+        "src/test/java/hn/shadowcore/mercadox/library/redis/util/RedisIdempotencyCheckerIntTest.java",
+        "src/main/java/hn/shadowcore/mercadox/library/redis/util/RedisIdempotencyChecker.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "RedisIdempotencyCheckerTest",
+      "target": "RedisIdempotencyChecker",
+      "source_files": [
+        "src/test/java/hn/shadowcore/mercadox/library/redis/util/RedisIdempotencyCheckerTest.java",
+        "src/main/java/hn/shadowcore/mercadox/library/redis/util/RedisIdempotencyChecker.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "CartRedisRepositoryIntTest",
+      "target": "RedisTestSupport",
+      "source_files": [
+        "src/test/java/hn/shadowcore/mercadox/library/redis/repository/CartRedisRepositoryIntTest.java",
+        "src/test/java/hn/shadowcore/mercadox/library/redis/util/RedisTestSupport.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "RedisIdempotencyCheckerIntTest",
+      "target": "RedisTestSupport",
+      "source_files": [
+        "src/test/java/hn/shadowcore/mercadox/library/redis/util/RedisIdempotencyCheckerIntTest.java",
+        "src/test/java/hn/shadowcore/mercadox/library/redis/util/RedisTestSupport.java"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "inherits",
+      "why": "bridges separate communities"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `RedisIdempotencyCheckerIntTest` connect `RedisIdempotencyCheckerIntTest` to `BaseTestEntities`, `RedisIdempotencyChecker`?",
+      "why": "High betweenness centrality (0.398) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `RedisTestSupport` connect `BaseTestEntities` to `RedisIdempotencyCheckerIntTest`, `CartRedisRepositoryIntTest.java`?",
+      "why": "High betweenness centrality (0.294) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `RedisIdempotencyChecker` connect `RedisIdempotencyChecker` to `RedisIdempotencyCheckerIntTest`, `.claimProcessing`?",
+      "why": "High betweenness centrality (0.245) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `hn.shadowcore:mercado-x-redis` to the rest of the system?",
+      "why": "1 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

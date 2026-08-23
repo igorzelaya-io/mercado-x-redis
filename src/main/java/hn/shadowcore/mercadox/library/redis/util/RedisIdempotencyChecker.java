@@ -3,17 +3,12 @@ package hn.shadowcore.mercadox.library.redis.util;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
 @Slf4j
-@Component
 @RequiredArgsConstructor
-@ConditionalOnBean(value = {StringRedisTemplate.class, RedisTemplate.class})
 public class RedisIdempotencyChecker {
 
     private final StringRedisTemplate redisTemplate;
