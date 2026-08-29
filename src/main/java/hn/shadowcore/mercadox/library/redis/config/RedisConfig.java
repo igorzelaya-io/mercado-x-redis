@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import hn.shadowcore.mercadox.library.redis.util.RedisIdempotencyChecker;
+import hn.shadowcore.mercadox.library.redis.util.RedisRateLimiter;
 
 import java.time.Duration;
 
@@ -58,6 +59,12 @@ public class RedisConfig {
     @ConditionalOnMissingBean
     public RedisIdempotencyChecker redisIdempotencyChecker(StringRedisTemplate stringRedisTemplate) {
         return new RedisIdempotencyChecker(stringRedisTemplate);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public RedisRateLimiter redisRateLimiter(StringRedisTemplate stringRedisTemplate) {
+        return new RedisRateLimiter(stringRedisTemplate);
     }
 
 }
