@@ -1,4 +1,4 @@
-package hn.shadowcore.mercadox.library.redis.config;
+package hn.alturaforge.mercadox.library.redis.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -14,14 +14,14 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import hn.shadowcore.mercadox.library.redis.util.RedisIdempotencyChecker;
-import hn.shadowcore.mercadox.library.redis.util.RedisRateLimiter;
+import hn.alturaforge.mercadox.library.redis.util.RedisIdempotencyChecker;
+import hn.alturaforge.mercadox.library.redis.util.RedisRateLimiter;
 
 import java.time.Duration;
 
 @Configuration
 @EnableCaching
-@ComponentScan("hn.shadowcore.mercadox.library.redis")
+@ComponentScan("hn.alturaforge.mercadox.library.redis")
 public class RedisConfig {
 
     @Bean

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>hn.shadowcore</groupId>
+    <groupId>hn.alturaforge</groupId>
     <artifactId>mercado-x-redis</artifactId>
     <version>1.0.0</version>
     <name>mercado-x-redis</name>
@@ -17,7 +17,7 @@
     </properties>
 
     <parent>
-        <groupId>hn.shadowcore</groupId>
+        <groupId>hn.alturaforge</groupId>
         <artifactId>mercado-x-parent</artifactId>
         <version>1.0.0</version>
     </parent>
@@ -55,7 +55,7 @@
         </dependency>
 
         <dependency>
-            <groupId>hn.shadowcore</groupId>
+            <groupId>hn.alturaforge</groupId>
             <artifactId>mercado-x-library-entity</artifactId>
             <version>1.0.0</version>
         </dependency>

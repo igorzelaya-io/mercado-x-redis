@@ -1,11 +1,11 @@
-package hn.shadowcore.mercadox.library.redis.repository;
+package hn.alturaforge.mercadox.library.redis.repository;
 
-import hn.shadowcore.mercadox.library.entity.response.dto.CartDto;
-import hn.shadowcore.mercadox.library.entity.response.dto.ItemDto;
-import hn.shadowcore.mercadox.library.redis.config.RedisConfig;
-import hn.shadowcore.mercadox.library.redis.config.RedisTtlConfig;
-import hn.shadowcore.mercadox.library.redis.util.RedisTestSupport;
-import hn.shadowcore.mercadox.library.redis.util.TestRedisConnectionConfig;
+import hn.alturaforge.mercadox.library.entity.response.dto.CartDto;
+import hn.alturaforge.mercadox.library.entity.response.dto.ItemDto;
+import hn.alturaforge.mercadox.library.redis.config.RedisConfig;
+import hn.alturaforge.mercadox.library.redis.config.RedisTtlConfig;
+import hn.alturaforge.mercadox.library.redis.util.RedisTestSupport;
+import hn.alturaforge.mercadox.library.redis.util.TestRedisConnectionConfig;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

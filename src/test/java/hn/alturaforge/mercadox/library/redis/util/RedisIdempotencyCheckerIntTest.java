@@ -1,8 +1,8 @@
-package hn.shadowcore.mercadox.library.redis.util;
+package hn.alturaforge.mercadox.library.redis.util;
 
-import hn.shadowcore.mercadox.library.redis.config.RedisConfig;
-import hn.shadowcore.mercadox.library.redis.config.RedisTtlConfig;
-import hn.shadowcore.mercadox.library.redis.repository.CartRedisRepository;
+import hn.alturaforge.mercadox.library.redis.config.RedisConfig;
+import hn.alturaforge.mercadox.library.redis.config.RedisTtlConfig;
+import hn.alturaforge.mercadox.library.redis.repository.CartRedisRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;

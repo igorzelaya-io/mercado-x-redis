@@ -1,2 +1,2 @@
-hn.shadowcore.mercadox.library.redis.config.RedisConfig
-hn.shadowcore.mercadox.library.redis.config.RedisTtlConfig
+hn.alturaforge.mercadox.library.redis.config.RedisConfig
+hn.alturaforge.mercadox.library.redis.config.RedisTtlConfig

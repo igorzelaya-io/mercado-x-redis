@@ -1,9 +1,9 @@
-package hn.shadowcore.mercadox.library.redis.base;
+package hn.alturaforge.mercadox.library.redis.base;
 
-import hn.shadowcore.mercadox.library.entity.model.auth.Organization;
-import hn.shadowcore.mercadox.library.entity.model.auth.User;
-import hn.shadowcore.mercadox.library.entity.model.core.Order;
-import hn.shadowcore.mercadox.library.entity.model.enums.OrderStatus;
+import hn.alturaforge.mercadox.library.entity.model.auth.Organization;
+import hn.alturaforge.mercadox.library.entity.model.auth.User;
+import hn.alturaforge.mercadox.library.entity.model.core.Order;
+import hn.alturaforge.mercadox.library.entity.model.enums.OrderStatus;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

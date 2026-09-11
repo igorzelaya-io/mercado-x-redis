@@ -1,6 +1,6 @@
-package hn.shadowcore.mercadox.library.redis.repository;
+package hn.alturaforge.mercadox.library.redis.repository;
 
-import hn.shadowcore.mercadox.library.entity.response.dto.CartDto;
+import hn.alturaforge.mercadox.library.entity.response.dto.CartDto;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;

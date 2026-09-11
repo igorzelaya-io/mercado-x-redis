@@ -1,6 +1,6 @@
-package hn.shadowcore.mercadox.library.redis.util;
+package hn.alturaforge.mercadox.library.redis.util;
 
-import hn.shadowcore.mercadox.library.redis.base.BaseTestEntities;
+import hn.alturaforge.mercadox.library.redis.base.BaseTestEntities;
 import org.testcontainers.containers.GenericContainer;
 
 public abstract class RedisTestSupport extends BaseTestEntities {

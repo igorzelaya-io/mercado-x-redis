@@ -1,4 +1,4 @@
-package hn.shadowcore.mercadox.library.redis.config;
+package hn.alturaforge.mercadox.library.redis.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;

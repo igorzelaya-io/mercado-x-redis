@@ -1,4 +1,4 @@
-package hn.shadowcore.mercadox.library.redis.util;
+package hn.alturaforge.mercadox.library.redis.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
